@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--CSS-->
+<link rel="shortcut icon" href="./CSS/unifeso-logo.png" type="image/x-icon" />
+<link rel="stylesheet" href="C:\Users\Cristiane\Desktop\NAF\CSS\style.css" />
+<link rel="stylesheet" href="CSS/swiper-bundle.min.css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+<!-- Icons -->
+<script src="https://kit.fontawesome.com/0cf08da9c1.js" crossorigin="anonymous"></script>
+
+ <!--JS-->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+        <title>Voluntário</title>
+
+    </head>
+<body>
+   <!--navbar-->
+    <nav class="navbar navbar-dark navbar-expand-md" id="voluntário">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">NAF</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="#agenda">Agenda</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="#perfil">Perfil</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+  <br> <br> <br>
+
+<!--Agenda-->
+
+    <div id="agenda">
+      <h2><strong>Agenda</strong></h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Serviço</th>
+            <th>Cliente</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Exemplos -->
+          <tr>
+            <td>02/07/2024</td>
+            <td>10:00</td>
+            <td>Orientação </td>
+            <td>Alice Araújo</td>
+            <td>
+              <select>
+                <option value="reservado">Reservado</option>
+                <option value="livre">Livre</option>
+                <option value="fechado" selected>Fechado</option>
+            </select>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>27/06/2024</td>
+            <td>15:00</td>
+            <td>Apoio a Organizações Sem Fins Lucrativos</td>
+            <td>Ezio Auditore</td>
+            <td>
+              <select>
+                <option value="reservado">Reservado</option>
+                <option value="livre">Livre</option>
+                <option value="fechado" selected>Fechado</option>
+            </select>
+            </td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>12/07/2024</td>
+            <td>13:10</td>
+            <td>Assistência MEI</td>
+            <td>Arthur Santos</td>
+            <td>
+              <select>
+                <option value="reservado">Reservado</option>
+                <option value="livre">Livre</option>
+                <option value="fechado" selected>Fechado</option>
+            </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+ 
+    <section id="perfil" style="display:none;">
+      <h1>Cadastro do Voluntário</h1>
+      <form id="formPerfil" enctype="multipart/form-data">
+          <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" placeholder="Nome" id="nome" name="nome" required>
+          </div>
+          <div class="form-group">
+              <label for="sobrenome">Sobrenome:</label>
+              <input type="text" placeholder="Sobrenome" id="sobrenome" name="sobrenome" required>
+          </div>
+          <div class="form-group">
+              <label for="email">E-mail:</label>
+              <input type="email" placeholder="E-mail" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+              <label for="telefone">Telefone:</label>
+              <input type="tel" placeholder="Telefone" id="telefone" name="telefone" required>
+          </div>
+          <div class="form-group">
+              <label for="dataNascimento">Data de Nascimento:</label>
+              <input type="date" id="dataNascimento" name="dataNascimento" required>
+          </div>
+          <div class="form-group">
+              <label for="tipoVoluntario">Tipo de Voluntário:</label>
+              <select id="tipoVoluntario" name="tipoVoluntario" required>
+                  <option value="">Selecione...</option>
+                  <option value="estudante">Estudante</option>
+                  <option value="professor">Professor</option>
+                  <option value="administracao">Administração</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="foto">Foto:</label>
+              <input type="file" id="foto" name="foto" accept="image/*">
+          </div>
+          <div class="form-group">
+              <button type="submit">Salvar Perfil</button>
+          </div>
+      </form>
+  </section>
+</div>
+
+<footer id="bottom-container">
+  <p class="copyright">© UNIFESONAF</p>
+</footer>
+
+
+    <!-- JavaScript -->
+    
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+            const agendaLink = document.querySelector('a[href="#agenda"]');
+            const perfilLink = document.querySelector('a[href="#perfil"]');
+            const agendaSection = document.getElementById('agenda');
+            const perfilSection = document.getElementById('perfil');
+
+            agendaLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                agendaSection.style.display = 'block';
+                perfilSection.style.display = 'none';
+            });
+
+            perfilLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                agendaSection.style.display = 'none';
+                perfilSection.style.display = 'block';
+            });})
+
+</script>
+        
+</body>
+</html>

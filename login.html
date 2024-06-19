@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet"> 
+    
+    <title>Login e Cadastro</title>
+</head>
+
+<!--CSS-->
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #3c5946;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.messages p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.messages a {
+    color: #0D9276;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.messages a:hover {
+    color: #3c5946;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #333;
+}
+
+.form-section {
+    display: none;
+    transition: opacity 0.5s ease;
+}
+
+.form-section.active {
+    display: block;
+    opacity: 1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group select {
+    width: calc(100% - 20px); 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #0D9276;
+    outline: none;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    pointer-events: none;
+    font-size: 1rem;
+    color: #999;
+    background: #fff;
+    padding: 0 5px;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label,
+.input-group select:focus ~ label,
+.input-group select:valid ~ label {
+    top: -15px;
+    left: 10px;
+    font-size: 0.85rem;
+    color: #0D9276;
+    background: transparent;
+    padding: 0; 
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.button button {
+    padding: 10px 20px;
+    background-color: #3c5946;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.button button:hover {
+    background-color: #0D9276;
+}
+
+</style>
+
+
+<body>
+    <div class="container">
+        <div class="messages">
+            <p id="msg-login">Não possui login? <a href="#" id="link-cadastro">Cadastre seu perfil</a></p>
+            <p id="msg-cadastro" style="display: none;">Já possui sua conta? <a href="#" id="link-login">Entre com seu login</a></p>
+        </div>
+
+        <!-- Formulário de Login -->
+        <div id="login" class="form-section active">
+            <h1>LOGIN</h1>
+            <form onsubmit="return logar()">
+                <div class="input-group">
+                    <input type="text" id="loginUsername" required>
+                    <label for="loginUsername">Usuário</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="loginPassword" required>
+                    <label for="loginPassword">Senha</label>
+                </div>
+                <div class="button">
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Formulário de Cadastro -->
+        <div id="signup" class="form-section">
+            <h1>CADASTRO</h1>
+            <form onsubmit="return cadastrar()">
+                <div class="input-group">
+                    <input type="text" id="signupNome" required>
+                    <label for="signupNome">Nome</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="signupSobrenome" required>
+                    <label for="signupSobrenome">Sobrenome</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="signupEmail" required>
+                    <label for="signupEmail">E-mail</label>
+                </div>
+                <div class="input-group">
+                    <input type="tel" id="signupTelefone" required>
+                    <label for="signupTelefone">Telefone</label>
+                </div>
+                <div class="input-group">
+                    <input type="date" id="signupDataNascimento" required>
+                    <label for="signupDataNascimento">Data de Nascimento</label>
+                </div>
+                <div class="input-group">
+                    <select id="signupTipo" required>
+                        <option value="">Selecione...</option>
+                        <option>Estudante</option>
+                        <option>Professor</option>
+                        <option>Administração</option>
+                    </select>
+                    <label for="signupTipo">Você é:</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signupSenha" required>
+                    <label for="signupSenha">Senha</label>
+                </div>
+                <div class="button">
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+<!--JavaScript-->
+    <script>
+        document.getElementById('link-cadastro').addEventListener('click', function(event) {
+    event.preventDefault();
+    showSection('signup');
+    document.getElementById('msg-login').style.display = 'none';
+    document.getElementById('msg-cadastro').style.display = 'block';
+});
+
+document.getElementById('link-login').addEventListener('click', function(event) {
+    event.preventDefault();
+    showSection('login');
+    document.getElementById('msg-login').style.display = 'block';
+    document.getElementById('msg-cadastro').style.display = 'none';
+});
+
+function showSection(section) {
+    var sections = document.querySelectorAll('.form-section');
+    sections.forEach(function(sec) {
+        sec.classList.remove('active');
+    });
+    document.getElementById(section).classList.add('active');
+}
+
+function logar() {
+    var loginUsername = document.getElementById('loginUsername').value;
+    var loginPassword = document.getElementById('loginPassword').value;
+
+    if (loginUsername === "admin" && loginPassword === "admin") {
+        alert('Login bem-sucedido!');
+        window.location.href = 'voluntários.html';
+    } else {
+        alert('Usuário ou senha incorretos');
+    }
+    return false;
+}
+
+function cadastrar() {
+    var nome = document.getElementById('signupNome').value;
+    var sobrenome = document.getElementById('signupSobrenome').value;
+    var email = document.getElementById('signupEmail').value;
+    var telefone = document.getElementById('signupTelefone').value;
+    var dataNascimento = document.getElementById('signupDataNascimento').value;
+    var tipo = document.getElementById('signupTipo').value;
+    var senha = document.getElementById('signupSenha').value;
+
+    alert('Cadastro realizado com sucesso!');
+    window.location.href = 'voluntários.html';
+    return false;
+}
+
+    </script>
+</body>
+</html>

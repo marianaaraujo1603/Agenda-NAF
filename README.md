@@ -28,4 +28,13 @@ MVP: O MVP definido foi o “Mágico de Oz” pois o objetivo da criação desse
 
 Tecnologias e Ferramentas: Visual Studio Code, Canva, Linguagens (HTML, CSS e JAVASCRIPT).
 
+Wireframe:
+
+![1](https://github.com/marianaaraujo1603/Agenda-NAF/assets/102182631/1228fb9b-78c7-4cfe-acfd-4f251bcd2356)
+![2](https://github.com/marianaaraujo1603/Agenda-NAF/assets/102182631/a73ad3f8-775d-4f14-ab6a-c6cb7a0a44f2)
+![3](https://github.com/marianaaraujo1603/Agenda-NAF/assets/102182631/72aa12dc-d7c5-4030-94b4-f4526587b541)
+
+Requisitos:
+
+[Requisitos - AgendaFácilNaf.xlsx](https://github.com/user-attachments/files/15921042/Requisitos.-.AgendaFacilNaf.xlsx)
 
